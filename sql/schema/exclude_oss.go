@@ -2,6 +2,8 @@
 // This source code is licensed under the Apache 2.0 license found
 // in the LICENSE file in the root directory of this source tree.
 
+//go:build !ent
+
 package schema
 
 import (
@@ -341,4 +343,14 @@ func detachObject(o Object, refs []Object) {
 			d.RemoveDep(o)
 		}
 	}
+}
+
+// IncludeRealm is a no-op for the community version.
+func IncludeRealm(r *Realm, _ []string) (*Realm, error) {
+	return r, nil // Unimplemented.
+}
+
+// IncludeSchema is a no-op for the community version.
+func IncludeSchema(s *Schema, _ []string) (*Schema, error) {
+	return s, nil // Unimplemented.
 }
